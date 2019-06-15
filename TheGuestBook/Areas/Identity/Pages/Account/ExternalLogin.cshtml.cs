@@ -61,7 +61,7 @@ namespace TheGuestBook.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = Url.Content("~/Messages");
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";

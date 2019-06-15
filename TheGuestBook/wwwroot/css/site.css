@@ -3,6 +3,22 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a, .navbar-inverse .navbar-brand {
+    color: #887e5d;
+}
+
+    a:hover, .navbar-inverse:hover .navbar-brand:hover {
+        color: #b6af99;
+        text-decoration: none;
+    }
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: default;
 }
 
 /* Wrapping element */
@@ -34,4 +50,9 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 2em;
 }
