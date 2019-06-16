@@ -26,11 +26,12 @@
                 @Html.DisplayNameFor(model => model.MessageBody)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumberOfLikes)
-            </th>
-            <th>
                 Edit message
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfLikes)
+            </th>
+
         </tr>
     </thead>
     <tbody>
@@ -50,18 +51,21 @@
                     @Html.DisplayFor(modelItem => item.MessageBody)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfLikes)
-                </td>
-                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
-                @*<td>
-                        <button>
+                <td>
+                    <div id=@string.Format("NumberOfLikes" + item.Id)>
+                        <span>
+                            @Html.DisplayFor(modelItem => item.NumberOfLikes)
+                        </span>
 
+                        <button class="like-button" type="button" onclick="addOneLike(@item.Id)">
+                            <img height="20" src="~/images/happy.png" />
                         </button>
-                    </td>*@
+                    </div>
+                </td>
             </tr>
         }
     </tbody>

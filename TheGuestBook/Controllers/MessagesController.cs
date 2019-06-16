@@ -149,5 +149,13 @@ namespace TheGuestBook.Controllers
         {
             return _context.Message.Any(e => e.Id == id);
         }
+
+        public int IncrementLikes(int id)
+        {
+            var message = _context.Message.Find(id);
+            message.NumberOfLikes++;
+            _context.SaveChanges();
+            return message.NumberOfLikes;
+        }
     }
 }
