@@ -1,72 +1,63 @@
 ﻿@model IEnumerable<TheGuestBook.Models.Message>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Messages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MessageBody)
-            </th>
-            <th>
-                Edit message
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfLikes)
-            </th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
+<h2>Messages</h2>
+<div>
+    @foreach (var item in Model)
+    {
+        <div class="flexbox-row">
+            <div class="flexbox-column margin-right-large">
+                <h4>
                     @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
+                </h4>
+                <span>
                     @Html.DisplayFor(modelItem => item.MessageBody)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-                <td>
-                    <div id=@string.Format("NumberOfLikes" + item.Id)>
-                        <span>
-                            @Html.DisplayFor(modelItem => item.NumberOfLikes)
-                        </span>
+                </span>
+                <i class="small">
+                    @Html.DisplayFor(modelItem => item.Author)
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </i>
+            </div>
+            <div class="flexbox-column text-right">
+                <div class="flexbox-row like-element" id=@string.Format("LikeElement" + item.Id)>
+                    <span>
+                        @if (User.Identity.Name != item.Author)
+                        {
+                            <button class="like-button" type="button" onclick="addOneLike(@item.Id)">
+                                <img height="20" src="~/images/happy.png" />
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="like-button like-button-disabled" type="button" tabindex="-1">
+                                <img height="20" src="~/images/happy.png" />
+                            </button>
+                        }
+                    </span>
+                    <span class="number-of-likes">
+                        @Html.DisplayFor(modelItem => item.NumberOfLikes)
+                    </span>
+                </div>
+                <div class="flexbox-column small">
+                    @if (User.Identity.Name == item.Author)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    }
+</div>
 
-                        <button class="like-button" type="button" onclick="addOneLike(@item.Id)">
-                            <img height="20" src="~/images/happy.png" />
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<a class="add-button" asp-action="Create">
+    <span>
+        Add
+    </span>
+</a>

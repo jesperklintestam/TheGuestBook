@@ -8,12 +8,13 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-a, .navbar-inverse .navbar-brand {
-    color: #887e5d;
+a, .navbar-inverse .navbar-brand, button {
+    color: #ceaf43;
+    transition: color 100ms;
 }
 
-    a:hover, .navbar-inverse:hover .navbar-brand:hover, a:focus, .navbar-inverse:focus .navbar-brand:focus {
-        color: #b6af99;
+    a:hover, .navbar-inverse .btn-link:hover, .navbar-inverse .navbar-brand:hover, a:focus, .navbar-inverse .navbar-brand:focus, button:hover {
+        color: #eac132;
         text-decoration: none;
     }
 
@@ -54,16 +55,90 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .navbar-brand {
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
-.like-button {
-    background: transparent;
-    border: none;
-    transition: filter 0.5s ease-out;
-    filter: hue-rotate(0deg) saturate(1);
+.message-form .message-field textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
 }
 
-    .like-button:hover {
-        filter: hue-rotate(-40deg) saturate(1);
+.vertical-center {
+    margin-top: 24vh;
+}
+
+.add-button {
+    position: fixed;
+    right: 10%;
+    bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10%;
+    height: 50px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+    .add-button span {
+        text-shadow: 0 2px 5px black;
+    }
+
+.nav li {
+    text-align: right;
+}
+
+    .nav li .navbar-btn {
+        margin-right: 20px;
+    }
+
+.flexbox-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexbox-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+i {
+    font-size: 12px;
+    color: #b1b0b0;
+}
+
+.margin-right-large {
+    margin-right: 100px;
+}
+
+.small {
+    margin-top: 10px;
+}
+
+.like-element {
+    min-width: 45px;
+    align-items: center;
+}
+
+    .like-element .like-button {
+        padding: 0;
+        background: transparent;
+        border: none;
+        transition: filter 0.5s ease-out;
+        filter: hue-rotate(0deg) saturate(1);
+    }
+
+        .like-element .like-button:hover {
+            filter: hue-rotate(-40deg) saturate(1);
+        }
+
+    .like-element .like-button-disabled:focus {
+        outline: none;
+    }
+
+    .like-element .like-button-disabled img {
+        filter: saturate(0);
     }

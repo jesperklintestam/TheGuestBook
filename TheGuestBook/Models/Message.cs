@@ -18,10 +18,11 @@ namespace TheGuestBook.Models
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Created")]
+        [DisplayFormat(DataFormatString = "{0:g}")]
         public DateTime CreationDate { get; set; }
         public string Author { get; set; }
-        public int AuthorId { get; set; }
-        [Display(Name = "Likes")]
+        public string AuthorId { get; set; }
+        [Display(Name = "Number Of Likes")]
         public int NumberOfLikes { get; set; }
         [Display(Name = "Message")]
         public string MessageBody { get; set; }

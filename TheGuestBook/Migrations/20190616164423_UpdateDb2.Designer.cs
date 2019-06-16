@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheGuestBook.Models;
 
 namespace TheGuestBook.Migrations
 {
     [DbContext(typeof(TheGuestBookContext))]
-    partial class TheGuestBookContextModelSnapshot : ModelSnapshot
+    [Migration("20190616164423_UpdateDb2")]
+    partial class UpdateDb2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,9 +2,9 @@
     ViewData["Title"] = "Start";
 }
 
-<div class="container m-lg">
+<div class="container m-lg text-center vertical-center">
     <h2>
-        Welcome to this very simple guest book
+        Welcome to this very simple guest book!
     </h2>
     @if (!User.Identity.IsAuthenticated)
     {
@@ -15,9 +15,8 @@
     }
     else
     {
-
-<a asp-area="" asp-controller="Messages" asp-action="Index">Messages</a>
-            @*<partial name="~/Views/Messages/Index.cshtml" model="IEnumerable<TheGuestBook.Models.Message>" />*@
-
+        <h3>
+            <a asp-area="" asp-controller="Messages" asp-action="Index">Open Guest Book</a>
+        </h3>
     }
 </div>
